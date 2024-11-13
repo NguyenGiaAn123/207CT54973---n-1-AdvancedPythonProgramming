@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Student Management</title>
+</head>
+<body>
+    <h2>Student Management</h2>
+    <form action="{{ url_for('add_student') }}" method="post">
+        <label for="name">Tên:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="age">Tuổi:</label><br>
+        <input type="number" id="age" name="age"><br><br>
+        
+        <label for="gender">Giới tính:</label><br>
+        <input type="text" id="gender" name="gender"><br><br>
+        
+        <label for="major">Ngành học:</label><br>
+        <input type="text" id="major" name="major"><br><br>
+        
+        <input type="submit" value="Thêm sinh viên"> 
+    </form>
+    
+    <h3>Students List</h3>
+    <ul>
+        {% for student in students %}
+            <li>
+                <br>|       Tên        |      Tuổi        |     Giới tính    |    Ngành Học     |</br>
+                | {{ student[1] }} | {{ student[2] }} | {{ student[3] }} | {{ student[4] }} |
+                <br></br>
+                <!-- Update Button -->
+                <form action="{{ url_for('update_student', student_id=student[0]) }}" method="get" style="display:inline;">
+                    <button type="submit" style="padding: 5px 10px; margin-left: 10px; font-size: 14px; cursor: pointer;">
+                        Cập nhật
+                    </button>
+                </form>
+                <!-- Delete Button -->
+                <form action="{{ url_for('delete_student', student_id=student[0]) }}" method="post" style="display:inline;">
+                    <button type="submit" style="padding: 5px 10px; font-size: 14px; cursor: pointer; color: white; background-color: red; border: none;">
+                        Xóa sinh viên
+                    </button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    
+    <a href="{{ url_for('login') }}">Đăng xuất</a>
+</body>
+</html>

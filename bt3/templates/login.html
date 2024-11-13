@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Connect to Database</title>
+</head>
+<body>
+    <h2>Connect to Database</h2>
+    <form action="{{ url_for('connect_db') }}" method="post">
+        <label for="db_name">Database Name:</label><br>
+        <input type="text" id="db_name" name="db_name"><br><br>
+
+        <label for="user">User:</label><br>
+        <input type="text" id="user" name="user"><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="host">Host:</label><br>
+        <input type="text" id="host" name="host"><br><br>
+
+        <label for="port">Port:</label><br>
+        <input type="text" id="port" name="port"><br><br>
+
+        <label for="table_name">Table Name:</label><br>
+        <input type="text" id="table_name" name="table_name"><br><br>
+
+        <input type="submit" value="Connect">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+</body>
+</html>

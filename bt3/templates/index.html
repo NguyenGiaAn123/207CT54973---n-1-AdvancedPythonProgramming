@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to the Student Management App</title>
+</head>
+<body>
+    <h1>Welcome to the Student Management App</h1>
+    <p>This application allows you to manage students in a PostgreSQL database.</p>
+
+    <h3>What would you like to do?</h3>
+    <ul>
+      <li>
+        <form action="{{ url_for('login') }}" method="get" style="display:inline;">
+            <button type="submit" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                Login and Connect to a Database
+            </button>
+        </form>
+    </li>
+    
+    </ul>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
